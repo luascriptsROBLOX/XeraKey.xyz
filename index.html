@@ -68,7 +68,7 @@
             padding: 30px 20px;
             border-radius: 15px;
             box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
-            max-width: 400px;
+            max-width: 500px;
             width: 90%;
             transform: scale(0.9);
             animation: fadeIn 2s ease-in-out forwards;
@@ -92,6 +92,26 @@
             0% { opacity: 0; transform: translateY(-30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .tab:hover {
+            background-color: rgba(0, 188, 212, 0.6);
+        }
+        .active-tab {
+            background-color: rgba(0, 188, 212, 0.8);
+        }
         .content {
             font-size: 1.1rem;
             line-height: 1.6;
@@ -106,17 +126,6 @@
         }
         .content p {
             margin-bottom: 15px;
-        }
-        .container::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            z-index: -1;
         }
         /* Responsiveness */
         @media (max-width: 768px) {
@@ -148,11 +157,24 @@
 
     <!-- Main Content -->
     <div class="container">
-        <div class="title">xera </div>
-<div class="content">
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active-tab" id="xera-tab" onclick="changeTab('xera')">Xera</div>
+            <div class="tab" id="scripts-tab" onclick="changeTab('scripts')">Scripts</div>
+        </div>
+
+        <!-- Xera Tab Content -->
+        <div id="xera-content" class="content">
             <p><strong>What Is Xera ????</strong></p>
-            <p>Xera Is An Multi Game Devloped Script </p>
-            <p>Scripts From Xera can Be Found At https://xeraultron.my.canva.site/xyz</p>
+            <p>Xera Is A Multi Game Developed Script </p>
+            <p>Scripts From Xera can Be Found At <a href="https://xeraultron.my.canva.site/xyz" target="_blank" style="color: #00bcd4;">https://xeraultron.my.canva.site/xyz</a></p>
+        </div>
+
+        <!-- Scripts Tab Content -->
+        <div id="scripts-content" class="content" style="display: none;">
+            <p><strong>Scripts Available</strong></p>
+            <p>Here are some scripts you can use for different games!</p>
+            <!-- Add your scripts here -->
         </div>
     </div>
 
@@ -238,6 +260,19 @@
                 document.getElementById("loading-screen").style.display = "none";
             }, 2000); // Adjust the time (in ms) to control how long the loading screen stays visible
         };
-    </script>
-</body>
-</html>
+
+        // Function to switch between tabs
+        function changeTab(tab) {
+            const xeraContent = document.getElementById("xera-content");
+            const scriptsContent = document.getElementById("scripts-content");
+            const xeraTab = document.getElementById("xera-tab");
+            const scriptsTab = document.getElementById("scripts-tab");
+
+            if (tab === 'xera') {
+                xeraContent.style.display = "block";
+                scriptsContent.style.display = "none";
+                xeraTab.classList.add("active-tab");
+                scriptsTab.classList.remove("active-tab");
+            } else {
+                xeraContent.style.display = "none";
+                scriptsContent.style
