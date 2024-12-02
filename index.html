@@ -13,7 +13,7 @@
             box-sizing: border-box;
         }
         body {
-            background: linear-gradient(135deg, #00bcd4, #00796b);
+            background: linear-gradient(135deg, #616161, #212121); /* Grey to Black gradient */
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
@@ -24,6 +24,20 @@
             overflow: hidden;
             position: relative;
             flex-direction: column;
+            animation: backgroundAnimation 6s infinite alternate;
+        }
+
+        /* Background Animation */
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(135deg, #616161, #212121);
+            }
+            50% {
+                background: linear-gradient(135deg, #333333, #000000);
+            }
+            100% {
+                background: linear-gradient(135deg, #616161, #212121);
+            }
         }
 
         /* Loading Screen */
@@ -216,10 +230,7 @@
                     value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0, sync: false }
                 },
                 size: {
-                    value: 3, random: true, anim: { enable: false, speed: 4, size_min: 0.3, sync: false }
-                },
-                line_linked: {
-                    enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1
+                    value: 3, random: true, anim: { enable: false, speed: 4, size_min: 0.3 }
                 },
                 move: {
                     enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out"
