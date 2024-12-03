@@ -194,6 +194,7 @@
         <div class="tabs">
             <div class="tab active-tab" id="xera-tab" onclick="changeTab('xera')">Xera</div>
             <div class="tab" id="scripts-tab" onclick="changeTab('scripts')">Scripts</div>
+            <div class="tab" id="credits-tab" onclick="changeTab('credits')">Credits</div> <!-- New Credits Tab -->
         </div>
 
         <!-- Xera Tab Content -->
@@ -215,23 +216,35 @@
                 <li><a href="https://rscripts.net/script/xera-flygui-xera-team-qn2b" target="_blank">Xera Fly</a></li>
             </ul>
         </div>
+
+        <!-- Credits Tab Content -->
+        <div id="credits-content" class="content" style="display: none;">
+            <p><strong>Credits</strong></p>
+            <p>This project is brought to you by the Xera Team.</p>
+            <p>Special thanks to:</p>
+            <ul>
+                <li>Kokil – Founder </li>
+                <li>luascripts787 – Discord User</li>
+                <li>Roblox User - thelastdemen2 </li>
+                <li>Community Contributors</li>
+            </ul>
+            <p>Website by <a href="https://xeraultron.my.canva.site" target="_blank">Xera Ultron</a></p>
+        </div>
     </div>
 
     <script>
-        // Particle.js Configuration
+        // Particles.js Configuration
         particlesJS('particles-js', {
             particles: {
-                number: {
-                    value: 100,
-                    density: { enable: true, value_area: 800 }
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#00bcd4" },
+                shape: {
+                    type: "circle",
+                    stroke: { width: 0, color: "#ffffff" },
+                    polygon: { nb_sides: 5 }
                 },
-                shape: { type: "circle", stroke: { width: 0, color: "#ffffff" } },
-                opacity: {
-                    value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0, sync: false }
-                },
-                size: {
-                    value: 3, random: true, anim: { enable: false, speed: 4, size_min: 0.3 }
-                },
+                opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } },
+                size: { value: 3, random: true, anim: { enable: true, speed: 40, size_min: 0.3 } },
                 move: {
                     enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out"
                 }
@@ -257,19 +270,32 @@
         function changeTab(tab) {
             const xeraContent = document.getElementById("xera-content");
             const scriptsContent = document.getElementById("scripts-content");
+            const creditsContent = document.getElementById("credits-content");
             const xeraTab = document.getElementById("xera-tab");
             const scriptsTab = document.getElementById("scripts-tab");
+            const creditsTab = document.getElementById("credits-tab");
 
             if (tab === 'xera') {
                 xeraContent.style.display = "block";
                 scriptsContent.style.display = "none";
+                creditsContent.style.display = "none";
                 xeraTab.classList.add("active-tab");
                 scriptsTab.classList.remove("active-tab");
-            } else {
+                creditsTab.classList.remove("active-tab");
+            } else if (tab === 'scripts') {
                 xeraContent.style.display = "none";
                 scriptsContent.style.display = "block";
+                creditsContent.style.display = "none";
                 xeraTab.classList.remove("active-tab");
                 scriptsTab.classList.add("active-tab");
+                creditsTab.classList.remove("active-tab");
+            } else if (tab === 'credits') {
+                xeraContent.style.display = "none";
+                scriptsContent.style.display = "none";
+                creditsContent.style.display = "block";
+                xeraTab.classList.remove("active-tab");
+                scriptsTab.classList.remove("active-tab");
+                creditsTab.classList.add("active-tab");
             }
         }
     </script>
